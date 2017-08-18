@@ -35,6 +35,10 @@ class login extends CI_Controller {
             echo validation_errors();
         }
     }
+    public function logout(){
+        $this->session->unset_userdata('user_id');
+        return redirect('login');
+    }
 
 }
 

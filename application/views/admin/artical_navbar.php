@@ -24,7 +24,11 @@
                             </div>
                         </div>
                     </form>
-                  <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <!--<a href="<?= base_url('login/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>-->
+                   <?= anchor('login/logout','Logout', array('class'=>'glyphicon glyphicon-log-out')) ?>
+                    
+                </li>
                 
                 
             </ul>
