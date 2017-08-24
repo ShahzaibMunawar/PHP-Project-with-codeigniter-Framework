@@ -5,12 +5,12 @@
                                             [
                                                     'field' => 'title',
                                                     'label' => 'Artical title',
-                                                    'rules' => 'required|alphadash'
+                                                    'rules' => 'required'
                                             ],
                                             [
                                                     'field' => 'body',
                                                     'label' => 'Artical body',
-                                                    'rules' => 'required'
+                                                    'rules' => 'required',
                                             ]
                             ],
      

@@ -5,6 +5,7 @@
     <?php echo form_hidden('user_id', $this->session->userdata('user_id')); ?>
     <fieldset>
         <legend>Add Article</legend>
+    
         <div class="row">
             <div class="col-lg-7"> 
                 <div class="form-group">
@@ -21,22 +22,20 @@
                         <?php echo form_textarea(['name' => 'body', 'class' => 'form-control', 'placeholder' => 'Article body', 'value' => set_value('body')]) ?>
                     </div>
                 </div>
-
-
-
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <br>
                         <br>
                         <?php echo form_reset(['name' => 'Reset', 'value' => 'Reset', 'class' => 'btn btn-default']) ?>
-                        <?php echo form_Submit(['name' => 'submit', 'value' => 'Submit', 'class' => 'btn btn-primary']) ?>
+                        <?php echo form_Submit(['name' => 'submit', 'value' => 'Save', 'class' => 'btn btn-primary']) ?>
                         <br>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5">
-                <?php echo form_error('title'); ?>
-                <?php echo form_error('body'); ?>
+              
+                <?=  form_error('title'); ?>
+                <?= form_error('body'); ?>
             </div>
         </div>
     </fieldset>

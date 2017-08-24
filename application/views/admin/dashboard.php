@@ -8,6 +8,16 @@
             <!--------> 
         </div>
     </div>
+                <?php if ($feedback = $this->session->flashdata('feedback')): 
+                    $feedback_class = $this->session->flashdata('feedback_class'); ?> <!--this is used to set the class -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissible <?= $feedback_class ?>"> <!--here we dynamicaly call the class -->
+                        <?= $feedback ?>
+                    </div>
+                </div>
+            </div>
+                <?php endif; ?>
     <table class="table">
         <thead>
         <th>Sr. No.</th>
