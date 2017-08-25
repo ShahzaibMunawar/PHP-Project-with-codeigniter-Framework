@@ -10,29 +10,31 @@ class Admin extends CI_Controller {
 
     public function dashboard() {
 
+        $this->load->helper('form');
+        
         $this->load->model('articlemodel', 'artical'); //to load a model and also rename the name for future use
 
-        $articals = $this->artical->article_list(); //
+        $articals = $this->artical->article_list(); // this will fetch the data from database through the "Articlemodel"->articallist
 
-        $this->load->view('admin/dashboard', ['articals' => $articals]); //this $articals take 
+        $this->load->view('admin/dashboard', ['articals' => $articals]);
     }
 
     public function add_artical() {
-        $this->load->helper('form');
-        $this->load->view('admin/add_artical');
+        $this->load->helper('form'); //load helper
+        $this->load->view('admin/add_artical'); //open add artical page
     }
 
     public function store_artical() {
         $this->load->library('form_validation');
-        if ( $this->form_validation->run('add_artical_rules') ) {
+        if ($this->form_validation->run('add_artical_rules')) {
 
             $post = $this->input->post();
             unset($post['submit']);
 //            print_r($post);
 //            exit;
-            $this->load->model('articlemodel','artical');
-            
-            if ( $this->artical->add_artical($post)) {
+            $this->load->model('articlemodel', 'artical');
+
+            if ($this->artical->add_artical($post)) {
                 $this->session->set_flashdata('feedback', 'Artical Saved Successfully.');
                 $this->session->set_flashdata('feedback_class', 'alert-success'); //this funcion will change the color of flash display to green
             } else {
@@ -45,11 +47,49 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function edit_artical() {
-        
+    public function edit_artical($artical_id) {
+        $this->load->helper('form');
+        $this->load->model('articlemodel');
+        $artical = $this->articlemodel->find_artical($artical_id); //this will redirect to the artical model class 
+        $this->load->view('admin/edit_artical', ['artical' => $artical]);
+    }
+
+    public function update_artical($artical_id) {
+
+        $this->load->library('form_validation');
+        if ($this->form_validation->run('add_artical_rules')) {
+
+            $post = $this->input->post();
+            unset($post['submit']);
+//            print_r($post);
+//            exit;
+            $this->load->model('articlemodel', 'artical');
+
+            if ($this->artical->update_artical($artical_id, $post)) {
+                $this->session->set_flashdata('feedback', 'Artical Updated Successfully.');
+                $this->session->set_flashdata('feedback_class', 'alert-success'); //this funcion will change the color of flash display to green
+            } else {
+                $this->session->set_flashdata('feedback', 'Failed to Update artical Please try again.');
+                $this->session->set_flashdata('feedback_class', 'alert-danger'); //this funcion will change the color of flash display to red
+            }
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('admin/edit_artical');
+        }
     }
 
     public function delete_artical() {
+        $artical_id = $this->input->post("artical_id");
+        $this->load->model('articlemodel','artical');
+        if ($this->artical->delete_artical($artical_id)) {
+                $this->session->set_flashdata('feedback', 'Artical Deleted Successfully.');
+                $this->session->set_flashdata('feedback_class', 'alert-success'); //this funcion will change the color of flash display to green
+            } else {
+                $this->session->set_flashdata('feedback', 'Failed to Delete artical Please try again.');
+                $this->session->set_flashdata('feedback_class', 'alert-danger'); //this funcion will change the color of flash display to red
+            }
+            return redirect('admin/dashboard');
+        
         
     }
 
