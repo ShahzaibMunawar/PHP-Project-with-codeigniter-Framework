@@ -12,9 +12,9 @@ class Admin extends CI_Controller {
 
         $this->load->helper('form');
         
-        $this->load->model('articlemodel', 'artical'); //to load a model and also rename the name for future use
+        $this->load->model('articlemodel'); //to load a model and also rename the name for future use
 
-        $articals = $this->artical->article_list(); // this will fetch the data from database through the "Articlemodel"->articallist
+        $articals = $this->articlemodel->article_list(); // this will fetch the data from database through the "Articlemodel"->articallist
 
         $this->load->view('admin/dashboard', ['articals' => $articals]);
     }
@@ -90,7 +90,14 @@ class Admin extends CI_Controller {
             }
             return redirect('admin/dashboard');
         
-        
+    }
+    public function search(){
+        $this->load->model('articlemodel');
+        $keyword = $this->input->post('search');
+        $articals  = $this->articlemodel->search($keyword);
+
+  
+       $this->load->view('admin/dashboard', ['articals' => $articals]);
     }
 
 //   if user id is not loged in then it will be redirect to the login page

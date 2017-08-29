@@ -35,8 +35,19 @@ class Articlemodel extends CI_Model {
     public function add_artical($array) {
         return $this->db->insert('artical', $array);
     }
-    public function delete_artical($artical_id){
-        return $this->db->delete('artical',['id'=>$artical_id]);
+
+    public function delete_artical($artical_id) {
+        return $this->db->delete('artical', ['id' => $artical_id]);
+    }
+
+    public function search($articals) {
+        $this->db->where('title', $articals);
+        $query = $this->db->get('artic1al');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }else{
+            redirect('admin/dashboard');
+        }
     }
 
 }

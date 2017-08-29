@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/bootstrap-theme.css'?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'js/jquery-3.2.1.js'?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'js/jquery-3.2.1.min.js'?>" />
+
     </head>
     <body>
         <div class="container">
