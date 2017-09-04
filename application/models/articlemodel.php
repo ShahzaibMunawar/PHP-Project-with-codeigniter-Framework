@@ -42,7 +42,7 @@ class Articlemodel extends CI_Model {
 
     public function search($articals) {
         $this->db->where('title', $articals);
-        $query = $this->db->get('artic1al');
+        $query = $this->db->get('artical');
         if ($query->num_rows() > 0) {
             return $query->result();
         }else{

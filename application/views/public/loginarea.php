@@ -2,7 +2,23 @@
     <?php echo form_open('login/admin_login', ['class' => "form-horizontal"]) ?>
     <fieldset>
         <legend>Admin Login</legend>
-        <!--to display the flashdata on the page-->
+     
+        <!--  flash data to show user added  -->
+        <?php
+        if ($user_added = $this->session->flashdata('user_added')):
+            $feedback_class = $this->session->flashdata('feedback_class');
+            ?> <!--this is used to set the class -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissible <?= $feedback_class ?>"> <!--here we dynamicaly call the class -->
+                        <?= $user_added ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+            
+               <!--to display the flashdata on the page that login fail-->
+            
         <?php if ($error = $this->session->flashdata('login_failed')): ?>
             <div class="row">
                 <div class="col-lg-6">
@@ -12,6 +28,8 @@
                 </div>
             </div>
         <?php endif; ?>
+               
+               
         <div class="row">
 
             <div class="col-lg-6">
@@ -34,9 +52,9 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <br>
-                        <br>
-                        <?php echo form_reset(['name' => 'Reset', 'value' => 'Reset', 'class' => 'btn btn-default']) ?>
+                        <?php echo form_reset(['name' => 'Reset', 'value' => 'Reset', 'class' => 'btn btn-default ']) ?>
                         <?php echo form_Submit(['name' => 'Login', 'value' => 'Login', 'class' => 'btn btn-primary']) ?>
+                        <?= anchor('login/Signup', 'Signup', ['class' => 'btn btn-primary pull-right']) ?>
                         <br>
                     </div>
                 </div>

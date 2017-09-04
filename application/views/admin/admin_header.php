@@ -5,8 +5,10 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.css')?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/bootstrap.min.css'?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/bootstrap-theme.css'?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url().'css/my_style_sheet.css'?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'js/jquery-3.2.1.js'?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'js/jquery-3.2.1.min.js'?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url().'js/script.js'?>" />
 
     </head>
     <body>
